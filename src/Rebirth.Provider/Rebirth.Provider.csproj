@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
 
 	<PropertyGroup>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 		<LangVersion>7.1</LangVersion>
 		<Platforms>AnyCPU;x64;x86</Platforms>
 	</PropertyGroup>
