@@ -24,7 +24,7 @@ namespace Rebirth.Server.Login
         {
             //PacketHandler.Add((short)RecvOps.CP_ApplyHotFix, (c, p) => c.Security.HandleHotFix(p), false);
 
-            PacketHandler.Add((short)RecvOps.CP_CheckPassword, Handle_CheckPassword, false);
+            PacketHandler.Add((short)RecvOps.CP_CheckLoginAuthInfo, Handle_CheckPassword, false);
             //PacketHandler.Add((short)RecvOps.CP_GuestIDLogin, Handle_GuestIDLogin);
             //PacketHandler.Add((short)RecvOps.CP_AccountInfoRequest, Handle_AccountInfoRequest);
             PacketHandler.Add((short)RecvOps.CP_WorldInfoRequest, Handle_WorldRequest);

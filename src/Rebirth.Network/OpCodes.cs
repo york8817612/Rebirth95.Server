@@ -2,36 +2,211 @@
 {
     public enum SendOps
     {
-        //LP_BEGIN_SOCKET = 0x0,
-        LP_CheckPasswordResult = 0x0,
-        LP_GuestIDLoginResult = 0x1,
-        LP_AccountInfoResult = 0x2,
+        #region 未使用的舊版OpCode
+
         LP_CheckUserLimitResult = 0x3,
-        LP_SetAccountResult = 0x4,
-        LP_ConfirmEULAResult = 0x5,
-        LP_CheckPinCodeResult = 0x6,
-        LP_UpdatePinCodeResult = 0x7,
         LP_ViewAllCharResult = 0x8,
-        LP_SelectCharacterByVACResult = 0x9,
-        LP_WorldInformation = 0xA,
-        LP_SelectWorldResult = 0xB,
-        LP_SelectCharacterResult = 0xC,
-        LP_CheckDuplicatedIDResult = 0xD,
-        LP_CreateNewCharacterResult = 0xE,
-        LP_DeleteCharacterResult = 0xF,
-        LP_MigrateCommand = 0x10,
-        LP_AliveReq = 0x11,
-        LP_AuthenCodeChanged = 0x12,
-        LP_AuthenMessage = 0x13,
-        LP_SecurityPacket = 0x14,
-        LP_EnableSPWResult = 0x15,
-        LP_DeleteCharacterOTPRequest = 0x16,
-        LP_CheckCrcResult = 0x17,
-        LP_LatestConnectedWorld = 0x18,
-        LP_RecommendWorldMessage = 0x19,
-        LP_CheckExtraCharInfoResult = 0x1A,
-        LP_CheckSPWResult = 0x1B,
-        //LP_END_SOCKET = 0x1B,
+        #endregion
+
+        #region LP_BEGIN_SOCKET = 0x0,
+        /// <summary>
+        /// 密碼驗證[完成]
+        /// </summary>
+        LP_CheckPasswordResult = 0x0,
+        /// <summary>
+        /// 伺服器選單[完成]
+        /// </summary>
+        LP_WorldInformation = 0x1,
+        /// <summary>
+        /// 最後連線伺服器[完成]
+        /// </summary>
+        LP_LatestConnectedWorld = 0x2,
+        /// <summary>
+        /// 建議伺服器訊息[完成]，客戶端端預設移除此功能
+        /// </summary>
+        LP_RecommendWorldMessage = 0x3,
+        /// <summary>
+        /// 設定客戶端金鑰
+        /// </summary>
+        LP_SetClientKey = 0x4,
+        /// <summary>
+        /// 選擇伺服器[完成]
+        /// </summary>
+        LP_SetPhysicalWorldID = 0x5,
+        /// <summary>
+        /// 角色選單[完成]
+        /// </summary>
+        LP_SelectWorldResult = 0x6,
+        /// <summary>
+        /// 伺服器IP[完成]
+        /// </summary>
+        LP_SelectCharacterResult = 0x7,
+        /// <summary>
+        /// 帳號信息[完成]
+        /// </summary>
+        LP_AccountInfoResult = 0x8,
+        /// <summary>
+        /// 建立帳號
+        /// </summary>
+        LP_CreateMapleAccountResult = 0x9,
+        /// <summary>
+        /// 檢查角色名稱[完成]
+        /// </summary>
+        LP_CheckDuplicatedIDResult = 0xA,
+        /// <summary>
+        /// 建立角色[完成]
+        /// </summary>
+        LP_CreateNewCharacterResult = 0xB,
+        /// <summary>
+        /// 刪除角色[完成]
+        /// </summary>
+        LP_DeleteCharacterResult = 0xC,
+        /// <summary>
+        /// 還原刪除角色
+        /// </summary>
+        LP_ReservedDeleteCharacterResult = 0xD,
+        /// <summary>
+        /// 還原刪除角色取消
+        /// </summary>
+        LP_ReservedDeleteCharacterCancelResult = 0xE,
+        /// <summary>
+        /// 重新命名角色
+        /// </summary>
+        LP_RenameCharacterResult = 0xF,
+        /// <summary>
+        /// 設定角色ID
+        /// </summary>
+        LP_SetCharacterID = 0x10,
+        /// <summary>
+        /// 變更頻道
+        /// </summary>
+        LP_MigrateCommand = 0x11,
+        /// <summary>
+        /// 客戶端活動狀態請求
+        /// </summary>
+        LP_AliveReq = 0x12,
+        /// <summary>
+        /// Ping偵測回饋
+        /// </summary>
+        LP_PingCheckResult_ClientToGame = 0x13,
+        /// <summary>
+        /// 購物商城
+        /// </summary>
+        LP_AuthenCodeChanged = 0x14,
+        /// <summary>
+        /// 
+        /// </summary>
+        LP_AuthenMessage = 0x15,
+        /// <summary>
+        /// 
+        /// </summary>
+        LP_SecurityPacket = 0x16,
+        /// <summary>
+        /// 
+        /// </summary>
+        LP_PrivateServerPacket = 0x17,
+        /// <summary>
+        /// 
+        /// </summary>
+        SocketUnk1 = 0x18,
+        /// <summary>
+        /// 
+        /// </summary>
+        LP_ChangeSPWResult = 0x19,
+        /// <summary>
+        /// 建立角色驗證回覆
+        /// </summary>
+        LP_CheckSPWExistResult = 0x1A,
+        /// <summary>
+        /// 
+        /// </summary>
+        LP_CheckWebLoginEmailID = 0x1B,
+        /// <summary>
+        /// 
+        /// </summary>
+        LP_DeleteCharacterOTPRequest = 0x1C,
+        /// <summary>
+        /// 
+        /// </summary>
+        LP_CheckCrcResult = 0x1D,
+        /// <summary>
+        /// 打工系統[完成]
+        /// </summary>
+        LP_AlbaRequestResult = 0x1E,
+        /// <summary>
+        /// 
+        /// </summary>
+        LP_NotifyCenterAndGameAreConnected = 0x1F,
+        /// <summary>
+        /// 
+        /// </summary>
+        SocketUnk2 = 0x20,
+        /// <summary>
+        /// 
+        /// </summary>
+        SocketUnk3 = 0x21,
+        /// <summary>
+        /// 購買角色欄位[完成]
+        /// </summary>
+        LP_AddCharacterSlotsResult = 0x22,
+        /// <summary>
+        /// 選擇性別 + 設置第二組密碼[完成]
+        /// </summary>
+        LP_SelectGenderAck = 0x23,
+        /// <summary>
+        /// 選擇性別 + 設置第二組密碼回覆[完成]
+        /// </summary>
+        LP_SelectGenderResult = 0x24,
+        /// <summary>
+        /// 外掛偵測
+        /// </summary>
+        HackShieldRequest = 0x25,
+        /// <summary>
+        /// 強制變更角色名稱
+        /// </summary>
+        LP_ForceChangeCharName = 0x26,
+        /// <summary>
+        /// 強制變更角色名稱訊息
+        /// </summary>
+        LP_ForceChangeCharNameNotice = 0x27,
+        /// <summary>
+        /// 伺服器狀態
+        /// </summary>
+        LP_ServerStatus = 0x28,
+        /// <summary>
+        /// 背景驗證[完成]
+        /// </summary>
+        LP_SetBackground = 0x29,
+        /// <summary>
+        /// 
+        /// </summary>
+        SocketUnk4 = 0x2A,
+        /// <summary>
+        /// 
+        /// </summary>
+        SocketUnk5 = 0x2B,
+        /// <summary>
+        /// 
+        /// </summary>
+        LP_SetAutoSelectedWorld = 0x2C,
+        /// <summary>
+        /// 
+        /// </summary>
+        LP_WorldInfoForShiningResult = 0x2D,
+        /// <summary>
+        /// 遊戲啟動[完成]
+        /// </summary>
+        LP_GameStartResult = 0x2E,
+        /// <summary>
+        /// 
+        /// </summary>
+        LP_ApplyNameChangeResult = 0x2F,
+        /// <summary>
+        /// 
+        /// </summary>
+        LP_CheckSPWResult = 0x30,
+        #endregion LP_END_SOCKET = 0x30
+
         //LP_BEGIN_CHARACTERDATA = 0x1C,
         LP_InventoryOperation = 0x1C,
         LP_InventoryGrow = 0x1D,
@@ -528,47 +703,288 @@
 };
     public enum RecvOps
     {
-        //CP_BEGIN_SOCKET = 0x0,
-        CP_CheckPassword = 0x1,
-        CP_GuestIDLogin = 0x2,
-        CP_AccountInfoRequest = 0x3,
-        CP_WorldInfoRequest = 0x4,
-        CP_SelectWorld = 0x5,
+        #region 未使用
         CP_CheckUserLimit = 0x6,
-        CP_ConfirmEULA = 0x7,
-        CP_SetGender = 0x8,
-        CP_CheckPinCode = 0x9,
-        CP_UpdatePinCode = 0xA,
         CP_WorldRequest = 0xB,
-        CP_LogoutWorld = 0xC,
         CP_ViewAllChar = 0xD,
-        CP_SelectCharacterByVAC = 0xE,
-        CP_VACFlagSet = 0xF,
         CP_CheckNameChangePossible = 0x10,
-        CP_RegisterNewCharacter = 0x11,
         CP_CheckTransferWorldPossible = 0x12,
-        CP_SelectCharacter = 0x13,
-        CP_MigrateIn = 0x14,
-        CP_CheckDuplicatedID = 0x15,
-        CP_CreateNewCharacter = 0x16,
-        CP_CreateNewCharacterInCS = 0x17,
-        CP_DeleteCharacter = 0x18,
-        CP_AliveAck = 0x19,
-        CP_ExceptionLog = 0x1A,
-        CP_SecurityPacket = 0x1B,
-        CP_EnableSPWRequest = 0x1C,
-        CP_CheckSPWRequest = 0x1D,
-        CP_EnableSPWRequestByACV = 0x1E,
-        CP_CheckSPWRequestByACV = 0x1F,
-        CP_CheckOTPRequest = 0x20,
-        CP_CheckDeleteCharacterOTP = 0x21,
-        CP_CreateSecurityHandle = 0x22,
-        CP_SSOErrorLog = 0x23,
-        CP_ClientDumpLog = 0x24,
-        CP_CheckExtraCharInfo = 0x25,
-        CP_CreateNewCharacter_Ex = 0x26,
-        //CP_END_SOCKET = 0x27,
-        //CP_BEGIN_USER = 0x28,
+        #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_DUMMY_CODE = 0x64,
+        /// <summary>
+        /// SOCKET開始 (開啟客戶端)
+        /// </summary>
+        CP_BEGIN_SOCKET = 0x65,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_SecurityPacket = 0x66,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_PermissionRequest = 0x67,
+        /// <summary>
+        /// 密碼驗證[完成]
+        /// </summary>
+        CP_LoginBasicInfo = 0x68,
+        /// <summary>
+        /// 密碼驗證
+        /// </summary>
+        CP_CheckLoginAuthInfo = 0x69,
+        /// <summary>
+        /// 角色選單[完成]
+        /// </summary>
+        CP_SelectWorld = 0x6A,
+        /// <summary>
+        /// 驗證第二組密碼
+        /// </summary>
+        CP_CheckSPWRequest = 0x6B,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_ClientLodingTimeLog = 0x6C,
+        /// <summary>
+        /// 建立角色驗證[完成]
+        /// </summary>
+        CP_CheckSPWExistRequest = 0x6D,
+        /// <summary>
+        /// 玩家登入[完成]
+        /// </summary>
+        CP_MigrateIn = 0x6E,
+        /// <summary>
+        /// 選擇角色[完成]
+        /// </summary>
+        CP_SelectCharacter = 0x6F,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_SelectGoToStarPlanet = 0x70,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_SelectAccount = 0x71,
+        /// <summary>
+        /// 伺服器選單回覆[完成]
+        /// </summary>
+        CP_WorldInfoRequest = 0x72,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_WorldInfoForShiningRequest = 0x73,
+        /// <summary>
+        /// 檢查角色名稱[完成]
+        /// </summary>
+        CP_CheckDuplicatedID = 0x74,
+        /// <summary>
+        /// 登出伺服器
+        /// </summary>
+        CP_LogoutWorld = 0x75,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_PermissionRequest_Fake = 0x76,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_CheckLoginAuthInfo_Fake = 0x77,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_CreateMapleAccount_Fake = 0x78,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_SelectAccount_Fake = 0x79,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_SelectWorld_Fake = 0x7A,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_SelectCharacter_Fake = 0x7B,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_CreateNewCharacter_Fake = 0x7C,
+        /// <summary>
+        /// 建立角色[完成]
+        /// </summary>
+        CP_CreateNewCharacter = 0x7D,
+        /// <summary>
+        /// 50等角色卡角色建立
+        /// </summary>
+        CP_CreateNewCharacterInCS = 0x7E,
+        /// <summary>
+        /// 建立終極冒險家
+        /// </summary>
+        CP_CreateNewCharacter_PremiumAdventurer = 0x7F,
+        /// <summary>
+        /// 刪除角色[完成]
+        /// </summary>
+        CP_DeleteCharacter = 0x80,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_ReservedDeleteCharacterConfirm = 0x81,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_ReservedDeleteCharacterCancel = 0x82,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_RenameCharacter = 0x83,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_AliveAck_Fake = 0x84,
+        /// <summary>
+        /// 
+        /// </summary>
+        ClientUnk1 = 0x85,
+        /// <summary>
+        /// 客戶端錯誤信息回覆
+        /// </summary>
+        CP_ExceptionLog = 0x86,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_PrivateServerPacket = 0x87,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_ResetLoginStateOnCheckOTP = 0x88,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_ChangeSPWRequest = 0x89,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_CheckSPWRequest_Fake = 0x8A,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_CheckOTPRequest = 0x8B,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_CheckDeleteCharacterOTP = 0x8C,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_CheckOTPForWebLaunchingRequest = 0x8D,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_CreateSecurityHandle = 0x8E,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_LogForDebug = 0x8F,
+        /// <summary>
+        /// 打工系统
+        /// </summary>
+        CP_AlbaRequest = 0x90,
+        /// <summary>
+        /// 角色卡
+        /// </summary>
+        CP_UpdateCharacterCard = 0x91,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_CheckCenterAndGameAreConnected = 0x92,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_ResponseToCheckAliveAck_Fake = 0x93,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_CreateMapleAccount = 0x94,
+        /// <summary>
+        /// 客戶端活動狀態確認(Pong)
+        /// </summary>
+        CP_AliveAck = 0x95,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_ResponseToCheckAliveAck = 0x96,
+        /// <summary>
+        /// 客戶端錯誤【[ Name: %s, Job: %d, Field: %d, World: %d, Channel: %d ]\r\n】
+        /// </summary>
+        CP_ClientDumpLog = 0x97,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_CrcErrorLog = 0x98,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_PerformanceInfoProvidedConsent = 0x99,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_CheckHotfix = 0x9A,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_ClientExceptionInfo = 0x9B,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_WvsSetUpStep = 0x9C,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_WvsCrashCallback = 0x9D,
+        /// <summary>
+        /// 選擇性別[完成]
+        /// </summary>
+        CP_SetGender = 0x9E,
+        /// <summary>
+        /// 
+        /// </summary>
+        ClientUnk2 = 0x9F,
+        /// <summary>
+        /// 
+        /// </summary>
+        ClientUnk3 = 0xA0,
+        /// <summary>
+        /// 背景驗證[完成]
+        /// </summary>
+        CP_BackgroundRequest = 0xA1,
+        /// <summary>
+        /// 
+        /// </summary>
+        ClientUnk4 = 0xA2,
+        /// <summary>
+        /// 
+        /// </summary>
+        ClientUnk5 = 0xA3,
+        /// <summary>
+        /// 
+        /// </summary>
+        ClientUnk6 = 0xA4,
+        /// <summary>
+        /// 
+        /// </summary>
+        ClientUnk7 = 0xA5,
+        /// <summary>
+        /// 客戶端開始(顯示視窗)[完成]
+        /// </summary>
+        CP_ClientStart = 0xA6,
+        /// <summary>
+        /// 申請變更角色名稱[完成]
+        /// </summary>
+        CP_ApplyChangeCharacterName = 0xA7,
+        //CP_END_SOCKET = 0xA8,
+        //CP_BEGIN_USER = 0xA9,
         CP_UserTransferFieldRequest = 0x29,
         CP_UserTransferChannelRequest = 0x2A,
         CP_UserMigrateToCashShopRequest = 0x2B,
@@ -726,6 +1142,18 @@
         CP_AcceptAPSPEvent = 0xC3,
         CP_UserDragonBallBoxRequest = 0xC4,
         CP_UserDragonBallSummonRequest = 0xC5,
+        /// <summary>
+        /// 角色燃燒
+        /// </summary>
+        CP_CharacterBurning = 0x220,
+        /// <summary>
+        /// 更新角色排序
+        /// </summary>
+        CP_UpdateCharacterSelectList = 0x221,
+        /// <summary>
+        /// 
+        /// </summary>
+        CP_DirectGoToField = 0x222,
         //CP_BEGIN_PET = 0xC6,
         CP_PetMove = 0xC7,
         CP_PetAction = 0xC8,
