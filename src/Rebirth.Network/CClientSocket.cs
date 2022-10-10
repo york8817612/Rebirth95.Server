@@ -60,7 +60,7 @@ namespace Rebirth.Network
 
                 var span = new Span<byte>(m_buffer, 4, size);
                 MapleAes.Transform(ref span, ref m_riv);
-                Shanda.DecryptTransform(ref span);
+                //Shanda.DecryptTransform(ref span);
 
                 var payload = new byte[size];
                 Buffer.BlockCopy(m_buffer, 4, payload, 0, size);
@@ -96,7 +96,7 @@ namespace Rebirth.Network
                 Buffer.BlockCopy(packet, 0, final, 4, packetLen);
 
                 var span = new Span<byte>(final, 4, packetLen);
-                Shanda.EncryptTransform(ref span);
+                //Shanda.EncryptTransform(ref span);
                 MapleAes.Transform(ref span, ref m_siv);
 
                 SendAsync(final, 0, finalLen, final);
